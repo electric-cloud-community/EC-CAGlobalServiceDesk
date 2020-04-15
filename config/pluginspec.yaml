@@ -1,0 +1,391 @@
+pluginInfo:
+  # This is default sample specification
+  # Feel free to change it
+  # Call flowpdk showdoc pluginspec to see the list of available fields and their description
+  pluginName: 'EC-CAGlobalServiceDesk'
+  version: '0.0.1'
+  description: 'Plugin for CA Global Service Desk'
+  author: 'Shaohua Wen <swen@cloudbees.com>'
+  supportUrl: '<>'
+  category: 'Utilities'
+
+# REST-backed plugin configuration
+configuration:
+  parameters:
+  -
+    name: serviceAccountName
+    label: Service Account Name
+    required: true
+    type: entry
+    documentation: The Service Account Name
+  -
+    name: authTokenURL
+    label: Auth Token URL
+    required: true
+    type: entry
+    documentation: Auth Token URL
+  checkConnection: true
+  restConfigInfo:
+    endpointLabel: 'REST Endpoint'
+    checkConnectionUri: '/user'
+    headers:
+      Accept: 'application/json'
+    authSchemes:
+      bearer:
+        passwordLabel: 'Service Account Password'
+        description: 'Service Account Password to connect to GSD.'
+  hasProxySupport: true
+  hasDebugLevel: true
+
+procedures:
+-
+  name: 'Copy Change Request'
+  description: 'This procedure copy change request'
+  hasConfig: true
+  shell: 'ec-perl'
+  parameters:
+  -
+    name: SourceChangeOrder
+    documentation: Source Change Order#
+    required: true
+    type: entry
+    label: Source Change Order
+    restParamInfo:
+      in: body
+  -
+    name: AuditUser
+    documentation: Audit User ID
+    required: true
+    type: entry
+    label: Audit User ID
+    restParamInfo:
+      in: body
+  -
+    name: ScheduleStartDate
+    documentation: ScheduleStartDate
+    required: true
+    type: date
+    label: Schedule Start Date
+    restParamInfo:
+      in: body
+  -
+    name: ScheduleStartTime
+    documentation: ScheduleStartTime
+    required: true
+    type: entry
+    label: Schedule Start Time
+    value: '00:00:00'
+    restParamInfo:
+      in: body  
+  -
+    name: ScheduleDuration
+    documentation: ScheduleDuration
+    required: true
+    type: integer
+    label: Schedule Duration
+    restParamInfo:
+      in: body    
+  -
+    name: VerificationStartDate
+    documentation: VerificationStartDate
+    required: true
+    type: date
+    label: Verification StartDate
+    restParamInfo:
+      in: body    
+  -
+    name: VerificationStartTime
+    documentation: VerificationStartTime
+    required: true
+    type: entry
+    label: Verification Start Time
+    value: '00:00:00'
+    restParamInfo:
+      in: body       
+  -
+    name: VerificationDuration
+    documentation: VerificationDuration
+    required: true
+    type: integer
+    label: Verification Duration
+    restParamInfo:
+      in: body    
+  -
+    name: BackoutDuration
+    documentation: BackoutDuration
+    required: true
+    type: integer
+    label: Backout Duration
+    restParamInfo:
+      in: body       
+  -
+    name: Impact
+    documentation: Impact
+    required: true
+    type: select
+    label: Impact
+    value: 'LOW'
+    options:
+      - name: LOW
+        value: LOW
+      - name: MIDIUM
+        value: MIDIUM
+      - name: HIGH
+        value: HIGH
+    restParamInfo:
+      in: body   
+  -
+    name: Risk
+    documentation: Risk
+    required: true
+    type: select
+    label: Risk
+    value: 0-Not Assessed
+    options:
+      - name: 0-Not Assessed
+        value: 0-Not Assessed
+      - name: 1-Very Low
+        value: 1-Very Low
+      - name: 2-Low
+        value: 2-Low
+      - name: 3-Medium
+        value: 3-Medium
+      - name: 4-High
+        value: 4-High
+      - name: 5-Extreme
+        value: 5-Extreme
+    restParamInfo:
+      in: body  
+  -
+    name: Changetype
+    documentation: Changetype
+    required: true
+    type: entry
+    label: Change Type
+    value: 'Normal'
+    restParamInfo:
+      in: body 
+  -
+    name: CAB
+    documentation: CAB
+    required: true
+    type: entry
+    label: CAB
+    value: Global
+    restParamInfo:
+      in: body 
+  -
+    name: RequirePrivilegeAccess
+    documentation: RequirePrivilegeAccess
+    required: true
+    type: checkbox
+    value: Yes
+    checkedValue: Yes
+    uncheckedValue: No
+    label: Require Privilege Access
+    restParamInfo:
+      in: body
+  -
+    name: OutsideSchMaintWindow
+    documentation: OutsideSchMaintWindow
+    required: true
+    type: checkbox
+    value: Yes
+    checkedValue: Yes
+    uncheckedValue: No
+    label: Outside SchMaint Window
+    restParamInfo:
+      in: body
+  -
+    name: ITSANFRCmpltd
+    documentation: ITSANFRCmpltd
+    required: true
+    type: checkbox
+    value: Yes
+    checkedValue: Yes
+    uncheckedValue: No
+    label: ITSANFR Cmpltd
+    restParamInfo:
+      in: body
+  -
+    name: NFRMPRefNum
+    documentation: NFRMPRefNum
+    required: true
+    type: entry
+    label: NFRMP Ref Num
+    restParamInfo:
+      in: body
+  -
+    name: ClarityPrjIdList
+    documentation: ClarityPrjIdList
+    required: true
+    type: textarea
+    label: Clarity PrjIdList
+    value: |
+      <ProjectDetails>
+      <ProjectId> </ProjectId>
+      </ProjectDetails>
+    restParamInfo:
+      in: body
+  -
+    name: OptionalAttrVals
+    documentation: OptionalAttrVals
+    required: true
+    type: textarea
+    label: Optional AttrVals
+    value: |
+      <ChgString>Requestor</ChgString>
+      <ChgString></ChgString>
+      <ChgString>Summary</ChgString>
+      <ChgString></ChgString>
+      <ChgString>Description</ChgString>
+      <ChgString></ChgString>
+      <ChgString>Justification</ChgString>
+      <ChgString></ChgString>
+    restParamInfo:
+      in: body
+  -
+    name: ConfigItemsList
+    documentation: ConfigItemsList
+    required: true
+    type: textarea
+    label: Config Items List
+    value: |
+      <CIDetails>
+      <CIName></CIName>
+      <CIClass></CIClass>
+      </CIDetails>
+    restParamInfo:
+      in: body
+  -
+    name: PCRecords
+    documentation: PCRecords
+    required: true
+    type: textarea
+    label: PC Records
+    value: |
+      <PackageDetails>
+      <PackageId></PackageId>
+      <DeploymentTool></DeploymentTool>
+      </PackageDetails>
+    restParamInfo:
+      in: body
+  outputParameters:
+  -
+    name: referenceNumber
+    description: the new reference number that generated.
+  -
+    name: restResult
+    description: Rest Call Result
+    isRestOutputParam: true
+  # Connects REST endpoint to the plugin procedure
+  restProcedureInfo:
+    url: '/copyChg'
+    methodName: 'copyChangeRequest'
+    httpMethod: 'POST'
+    contentType: application/xml
+    headers:
+      Accept: 'application/xml'
+      
+-
+  name: 'Submit for Approval Change Request'
+  description: 'This procedure Submit for Approval change request'
+  hasConfig: true
+  shell: 'ec-perl'
+  parameters:
+  -
+    name: referenceNumber
+    documentation: Change Request Number#
+    required: true
+    type: entry
+    label: Reference Number
+    restParamInfo:
+      in: body
+  -
+    name: SubmittedForApprovalBy
+    documentation: Submitted For Approval By
+    required: true
+    type: entry
+    label: Submitted For Approval By
+    restParamInfo:
+      in: body
+  outputParameters:
+  -
+    name: restResult
+    description: Rest Call Result
+    isRestOutputParam: true
+  # Connects REST endpoint to the plugin procedure
+  restProcedureInfo:
+    url: '/subForAppChg'
+    methodName: 'submitForApprovalChangeRequest'
+    httpMethod: 'POST'
+    contentType: application/xml
+    headers:
+      Accept: 'application/xml'
+-
+  name: 'Approve Change Order Request'
+  description: 'This procedure Approve change order request'
+  hasConfig: true
+  shell: 'ec-perl'
+  parameters:
+  -
+    name: ReferenceNumber
+    documentation: Change Request Number#
+    required: true
+    type: entry
+    label: Reference Number
+    restParamInfo:
+      in: body
+  -
+    name: Approvedby
+    documentation: Approved By
+    required: true
+    type: entry
+    label: Approved By
+    restParamInfo:
+      in: body
+  -
+    name: ApproverGroup
+    documentation: Approver Group
+    required: true
+    type: entry
+    label: Approver Group
+    restParamInfo:
+      in: body
+  -
+    name: ApprovalStatus
+    documentation: Approval Status
+    required: true
+    type: entry
+    label: Approval Status
+    restParamInfo:
+      in: body
+  -
+    name: Comment
+    documentation: Comment
+    required: true
+    type: entry
+    label: Comment
+    restParamInfo:
+      in: body
+  -
+    name: CABReview
+    documentation: CAB Review
+    required: true
+    type: entry
+    label: CAB Review
+    restParamInfo:
+      in: body
+  outputParameters:
+  -
+    name: restResult
+    description: Rest Call Result
+    isRestOutputParam: true
+  # Connects REST endpoint to the plugin procedure
+  restProcedureInfo:
+    url: '/approveChg'
+    methodName: 'approveChangeRequest'
+    httpMethod: 'POST'
+    contentType: application/xml
+    headers:
+      Accept: 'application/xml'

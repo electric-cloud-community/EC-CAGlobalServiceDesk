@@ -1,0 +1,9 @@
+excludeProcedures:
+  - flowpdkSetup
+proceduresOrder:
+  - Copy Change Request
+  - Submit for Approval Change Request
+  - Approve Change Order Request
+proceduresPreface: |
+  **IMPORTANT** Note that the names of Required parameters are marked in __*bold italics*__ in the parameter description table for each procedure.
+

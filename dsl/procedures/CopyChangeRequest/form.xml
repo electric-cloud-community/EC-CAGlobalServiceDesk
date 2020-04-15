@@ -1,0 +1,237 @@
+<!--
+    This form is generated automatically from the parameters pluginspec.
+    Please not not edit this file manually as it will be regenerated.
+-->
+<editor>
+  <help>/commander/pages/@PLUGIN_NAME@/help?s=Administration&amp;ss=Plugins#CopyChangeRequest</help>
+  <formElement>
+    <type>entry</type>
+    <property>config</property>
+    <configuration>1</configuration>
+    <propertyReference>/plugins/@PLUGIN_NAME@/project/ec_plugin_cfgs</propertyReference>
+    <required>1</required>
+    <documentation>Previously defined configuration for the plugin</documentation>
+    <label>Configuration Name:</label>
+  </formElement>
+  <formElement>
+    <type>entry</type>
+    <property>SourceChangeOrder</property>
+    <required>1</required>
+    <documentation>Source Change Order#</documentation>
+    <label>Source Change Order:</label>
+  </formElement>
+  <formElement>
+    <type>entry</type>
+    <property>AuditUser</property>
+    <required>1</required>
+    <documentation>Audit User ID</documentation>
+    <label>Audit User ID:</label>
+  </formElement>
+  <formElement>
+    <type>date</type>
+    <property>ScheduleStartDate</property>
+    <required>1</required>
+    <documentation>ScheduleStartDate</documentation>
+    <label>Schedule Start Date:</label>
+  </formElement>
+  <formElement>
+    <type>entry</type>
+    <property>ScheduleStartTime</property>
+    <required>1</required>
+    <documentation>ScheduleStartTime</documentation>
+    <label>Schedule Start Time:</label>
+    <value>00:00:00</value>
+  </formElement>
+  <formElement>
+    <type>integer</type>
+    <property>ScheduleDuration</property>
+    <required>1</required>
+    <documentation>ScheduleDuration</documentation>
+    <label>Schedule Duration:</label>
+  </formElement>
+  <formElement>
+    <type>date</type>
+    <property>VerificationStartDate</property>
+    <required>1</required>
+    <documentation>VerificationStartDate</documentation>
+    <label>Verification StartDate:</label>
+  </formElement>
+  <formElement>
+    <type>entry</type>
+    <property>VerificationStartTime</property>
+    <required>1</required>
+    <documentation>VerificationStartTime</documentation>
+    <label>Verification Start Time:</label>
+    <value>00:00:00</value>
+  </formElement>
+  <formElement>
+    <type>integer</type>
+    <property>VerificationDuration</property>
+    <required>1</required>
+    <documentation>VerificationDuration</documentation>
+    <label>Verification Duration:</label>
+  </formElement>
+  <formElement>
+    <type>integer</type>
+    <property>BackoutDuration</property>
+    <required>1</required>
+    <documentation>BackoutDuration</documentation>
+    <label>Backout Duration:</label>
+  </formElement>
+  <formElement>
+    <type>select</type>
+    <property>Impact</property>
+    <required>1</required>
+    <documentation>Impact</documentation>
+    <label>Impact:</label>
+    <option>
+      <name>LOW</name>
+      <value>LOW</value>
+    </option>
+    <option>
+      <name>MIDIUM</name>
+      <value>MIDIUM</value>
+    </option>
+    <option>
+      <name>HIGH</name>
+      <value>HIGH</value>
+    </option>
+    <value>LOW</value>
+  </formElement>
+  <formElement>
+    <type>select</type>
+    <property>Risk</property>
+    <required>1</required>
+    <documentation>Risk</documentation>
+    <label>Risk:</label>
+    <option>
+      <name>0-Not Assessed</name>
+      <value>0-Not Assessed</value>
+    </option>
+    <option>
+      <name>1-Very Low</name>
+      <value>1-Very Low</value>
+    </option>
+    <option>
+      <name>2-Low</name>
+      <value>2-Low</value>
+    </option>
+    <option>
+      <name>3-Medium</name>
+      <value>3-Medium</value>
+    </option>
+    <option>
+      <name>4-High</name>
+      <value>4-High</value>
+    </option>
+    <option>
+      <name>5-Extreme</name>
+      <value>5-Extreme</value>
+    </option>
+    <value>0-Not Assessed</value>
+  </formElement>
+  <formElement>
+    <type>entry</type>
+    <property>Changetype</property>
+    <required>1</required>
+    <documentation>Changetype</documentation>
+    <label>Change Type:</label>
+    <value>Normal</value>
+  </formElement>
+  <formElement>
+    <type>entry</type>
+    <property>CAB</property>
+    <required>1</required>
+    <documentation>CAB</documentation>
+    <label>CAB:</label>
+    <value>Global</value>
+  </formElement>
+  <formElement>
+    <type>checkbox</type>
+    <property>RequirePrivilegeAccess</property>
+    <required>1</required>
+    <documentation>RequirePrivilegeAccess</documentation>
+    <label>Require Privilege Access:</label>
+    <value>true</value>
+    <checkedValue>true</checkedValue>
+    <uncheckedValue>false</uncheckedValue>
+  </formElement>
+  <formElement>
+    <type>checkbox</type>
+    <property>OutsideSchMaintWindow</property>
+    <required>1</required>
+    <documentation>OutsideSchMaintWindow</documentation>
+    <label>Outside SchMaint Window:</label>
+    <value>true</value>
+    <checkedValue>true</checkedValue>
+    <uncheckedValue>false</uncheckedValue>
+  </formElement>
+  <formElement>
+    <type>checkbox</type>
+    <property>ITSANFRCmpltd</property>
+    <required>1</required>
+    <documentation>ITSANFRCmpltd</documentation>
+    <label>ITSANFR Cmpltd:</label>
+    <value>true</value>
+    <checkedValue>true</checkedValue>
+    <uncheckedValue>false</uncheckedValue>
+  </formElement>
+  <formElement>
+    <type>entry</type>
+    <property>NFRMPRefNum</property>
+    <required>1</required>
+    <documentation>NFRMPRefNum</documentation>
+    <label>NFRMP Ref Num:</label>
+  </formElement>
+  <formElement>
+    <type>textarea</type>
+    <property>ClarityPrjIdList</property>
+    <required>1</required>
+    <documentation>ClarityPrjIdList</documentation>
+    <label>Clarity PrjIdList:</label>
+    <value>&lt;ProjectDetails&gt;
+&lt;ProjectId&gt; &lt;/ProjectId&gt;
+&lt;/ProjectDetails&gt;
+</value>
+  </formElement>
+  <formElement>
+    <type>textarea</type>
+    <property>OptionalAttrVals</property>
+    <required>1</required>
+    <documentation>OptionalAttrVals</documentation>
+    <label>Optional AttrVals:</label>
+    <value>&lt;ChgString&gt;Requestor&lt;/ChgString&gt;
+&lt;ChgString&gt;&lt;/ChgString&gt;
+&lt;ChgString&gt;Summary&lt;/ChgString&gt;
+&lt;ChgString&gt;&lt;/ChgString&gt;
+&lt;ChgString&gt;Description&lt;/ChgString&gt;
+&lt;ChgString&gt;&lt;/ChgString&gt;
+&lt;ChgString&gt;Justification&lt;/ChgString&gt;
+&lt;ChgString&gt;&lt;/ChgString&gt;
+</value>
+  </formElement>
+  <formElement>
+    <type>textarea</type>
+    <property>ConfigItemsList</property>
+    <required>1</required>
+    <documentation>ConfigItemsList</documentation>
+    <label>Config Items List:</label>
+    <value>&lt;CIDetails&gt;
+&lt;CIName&gt;&lt;/CIName&gt;
+&lt;CIClass&gt;&lt;/CIClass&gt;
+&lt;/CIDetails&gt;
+</value>
+  </formElement>
+  <formElement>
+    <type>textarea</type>
+    <property>PCRecords</property>
+    <required>1</required>
+    <documentation>PCRecords</documentation>
+    <label>PC Records:</label>
+    <value>&lt;PackageDetails&gt;
+&lt;PackageId&gt;&lt;/PackageId&gt;
+&lt;DeploymentTool&gt;&lt;/DeploymentTool&gt;
+&lt;/PackageDetails&gt;
+</value>
+  </formElement>
+</editor>
