@@ -1,5 +1,3 @@
-## EC-CAGlobalServiceDesk Plugin  
-
 EC-CAGlobalServiceDesk
 ======================
 
